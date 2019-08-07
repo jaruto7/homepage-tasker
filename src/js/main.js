@@ -1,22 +1,50 @@
-"use strict";
+console.log(`O! Widzę dobry ziomek. Skoro tu wszedłeś to już umiesz klikać w devtoolsy ;)
+Pozdro!`);
 
-// service worker registration - remove if you're not going to use it
+const footerTitle = document.querySelector('.footer__paragraph--js');
 
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('serviceworker.js').then(function(registration) {
-      // Registration was successful
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }, function(err) {
-      // registration failed :(
-      console.log('ServiceWorker registration failed: ', err);
-    });
-  });
+
+const IdentifyPerson = (age, name) => {
+  const matured = age >= 18 && age <= 60;
+  const old = age >= 61 && age <= 75 || age >= 75;
+
+  if(matured) {
+    console.log(`Witaj ${name}, dorosły człowieku! Twój obecny wiek to ${age}.`);
+  } else if(old) {
+    console.log(`Witaj ${name}, starszy człowieku! Twój obecny wiek to ${age}.`);
+  } else {
+    console.log(`Witaj ${name}, młoda osóbko! Twój wiek to ${age}.`);
+  }
+
+  // switch(true) {
+  //   case (age >= 35 && age <= 40):
+  //     console.log(`Witaj, ${name} dorosły człowieku! Twój obecny wiek to ${age}.`);
+  //   break;
+  //   case (age >= 41 && age <= 70 || age >= 70):
+  //     console.log(`Witaj, ${name} starszy człowieku! Twój obecny wiek to ${age}.`);
+  //   break;
+    
+  //   default:
+  //     console.log(`Witaj, ${name} młody człowieku! Twój wiek to ${age}.`);
+  // }
 }
 
-// place your code below
+IdentifyPerson(61, 'Paweł');
+IdentifyPerson(32, 'Jarek');
+IdentifyPerson(17, 'Natalia');
 
+// console.log(footerTitle.innerHTML);
+footerTitle.innerHTML = 'Strona domowa Jarka Kajko, wszystkie treści są własnością autora, ale śmiało można kopiować na pełnym legalu.';
 
-console.log(`Hello world!`);
+const navigationBurger = document.querySelector('.hamburger__icon--js');
+
+navigationBurger.addEventListener('click', (e) => {
+  const navigationList = document.querySelector('.navigation__list--js');
+  const buttonActive = document.querySelector('.button');
+  navigationList.classList.toggle('navigation__list--visible');
+  buttonActive.classList.toggle('active');
+  buttonActive.classList.toggle('not-active');
+
+});
 
 
